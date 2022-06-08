@@ -1,0 +1,40 @@
+<div class="div">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">totalCorrect</th>
+        <th scope="col">TotalIncorrect</th>
+        <th scope="col">TotalMarks</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ele of data">
+        <td>{{ ele.totalCorrect }}</td>
+        <td>{{ ele.totalIncorrect }}</td>
+        <td>{{ ele.totalMarks }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-outline-dark" (click)="close()">Close</button>
+</div>
+<div>
+    <br><br><br>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">QuestionNo</th>
+        <th scope="col">Status</th>
+        <th scope="col">Your Answer</th>
+        <th scope="col">Correct Answer</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ele of data2">
+        <td>{{ ele.questionNo }}</td>
+        <td>{{ ele.isCorrect }}</td>
+        <td>{{ ele.answerData }}</td>
+        <td>{{ ele.correctAnswer }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

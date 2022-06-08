@@ -1,0 +1,73 @@
+<div class="div1">
+    <form [formGroup]="loginForm">
+    
+          <h1 class="login">LOGIN PAGE</h1>
+          <label for="email">Email:</label>
+          <input
+            type="email"
+            id="loginemail"
+            name="loginemail"
+            class="email"
+            formControlName="loginemail"
+            required
+          />
+          <br />
+          <small
+            class="text-danger"
+            *ngIf="loginemail1 && loginemail1.touched  &&loginemail1.errors?.['required']"
+            >Email address is required</small
+          >
+          <br />
+      
+          <small *ngIf="loginemail1 && loginemail1.dirty && loginemail1.invalid"
+            >Please enter valid email!</small
+          >
+          <br />
+      
+          <label for="password" class="password">Password:</label>
+          <input
+            type="password"
+            [maxlength]="10"
+            [minlength]="6"
+            id="loginpassword"
+            name="loginpassword"
+            formControlName="loginpassword"
+          />
+          <br />
+          <small
+            *ngIf="loginpassword1 && loginpassword1.touched && loginpassword1.invalid"
+            >Please enter valid password!</small
+          >
+          <br />
+      
+       
+        <button
+        type="submit"
+        class="submit"
+  class="btn btn-outline-secondary"
+     
+  [disabled]="loginForm.invalid"
+        (click)="userData()"
+      >
+        Submit
+      </button>
+      <button
+      type="submit"
+      class="submit"
+class="btn btn-outline-secondary"
+   
+(click)="signin()"
+    >
+     Signin
+    </button>
+    
+          <br /><br /><br />
+        
+   
+      </form>
+</div>
+<ngx-spinner
+  bdColor="#bdeadb"
+  template="<img src='https://media.giphy.com/media/o8igknyuKs6aY/giphy.gif' />"
+>
+</ngx-spinner>

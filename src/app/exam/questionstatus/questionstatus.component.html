@@ -1,0 +1,537 @@
+<div class="col-12 test-body-right py-3 pl-0 h-100 col-3">
+  <div class="row mx-0 h-100 overflow-hidden d-block">
+    <div class="col-12">
+      <div class="row">
+        <div class="col-12 border test-times">
+          <div
+            class="row text-center font-weight-bold fs-17 py-1 align-items-center"
+          >
+            <countdown [config]="{ leftTime: 1200 }"></countdown>
+          </div>
+        </div>
+        <div
+          class="col-12 shadow border test-questions-box mt-2"
+          style="height: 535px"
+        >
+          <div class="row py-1 align-items-center">
+            <div class="col-12">
+              <div class="row">
+                <div
+                  class="col-12 font-weight-bold fs-15 h-40px d-grid align-items-center bg-light border-bottom"
+                >
+                  Basic Computer
+                </div>
+              </div>
+            </div>
+            <div class="col-12 mb-40 overflow-auto test-question-box-h">
+              <div class="row">
+                <div class="col-12">
+                  <div
+                    class="col text-center py-2 px-0"
+                    class="row row-cols-7 mx-n2"
+                  >
+                    <a href="javascript:;" *ngFor="let q of qns">
+                      <span
+                        [ngClass]="
+                          q.answerType == '2' &&
+                          q.answerType2 == '1' &&
+                          q.answerType1 == '1'
+                            ? 'red'
+                            : q.answerType2 == '5'
+                            ? 'yellow'
+                            : q.answerType1 == '1'
+                            ? 'white'
+                            : q.answerType1 == '7'
+                            ? 'green'
+                            : 'blue'
+                        "
+                        class="btn btn-light border p-0 mx-20 my-20 rounded-pill fs-16 w-50px h-45px d-grid align-items-center justify-content-center"
+                      >
+                        {{ q.qn }}
+                      </span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 test-finish-btn" style="margin-top: 240px">
+              <div class="row">
+                <div class="col-12 py-1">
+                  <a
+                    href="javascript:;"
+                    data-bs-toggle="modal"
+                    data-bs-target="#exampleModal1"
+                    (click)="answer()"
+                    class="btn btn-danger d-block py-1 fs-15 text-capitalize"
+                    ><i class="far fa-lock"></i>
+                    <span class="ml-1">Exam Finish</span></a
+                  >
+                </div>
+                <div class="col-12 py-1">
+                  <a
+                    href="javascript:;"
+                    data-bs-toggle="modal"
+                    data-bs-target="#exampleModal"
+                    class="btn btn-info d-block py-1 fs-15 text-capitalize"
+                    ><i class="fal fa-question"></i>
+                    <span class="ml-1">instruction</span></a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div
+  class="modal fade instruction"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-body bg-light border rounded">
+        <div
+          class="instruction_content position-relative row mx-0 shadow rounded bg-white p-3"
+        >
+          <div class="col-12 text-center">
+            <strong class="fs-18 d-block text-center text-secondary"
+              >- Please read the following instructions carefully -</strong
+            >
+            <span
+              class="bg-secondary px-2 py-1 fs-13 rounded mt-3 d-inline-flex"
+              >12th_Electrostatics</span
+            >
+          </div>
+          <div class="col-auto position-absolute right-0 top-0">
+            <div
+              class="row timer-box align-items-center bg-secondary shadow py-2"
+            >
+              <div class="col-auto">
+                <span
+                  class="d-flex align-items-center w-50px h-50px justify-content-center border rounded-pill p-0"
+                  ><img
+                    class="img-fluid rounded-pill h-40px border shadow"
+                    src="assets/img/jitendrakumar.jpg"
+                    alt=""
+                /></span>
+              </div>
+              <div class="col pl-0">
+                <div id="timer" class="fs-13 d-flex">
+                  <p class="fs-13 mr-1 mb-0">Time Left :-</p>
+                  <strong id="minutes" class="d-block">59</strong>
+                  <span class="d-inline-block mx-1">:</span>
+                  <strong id="seconds" class="d-block">59</strong>
+                </div>
+                <span class="fs-14">Jitendra Bijarnia</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 my-4">
+            <div class="row">
+              <div class="col-12 mb-3 fs-18 text-secondary font-weight-bold">
+                General Instructions :-
+              </div>
+              <div class="col-12">
+                <ul class="list_count list_count pl-4 mb-4">
+                  <li class="">
+                    <p class="fs-15">
+                      You have 60 minutes to complete the test.
+                    </p>
+                  </li>
+                  <li class="">
+                    <p class="fs-15">
+                      A countdown timer at the top right corner of your screen
+                      will display the time remaining for you to complete the
+                      exam. When the clock runs out, the exam ends by default -
+                      you are not required to end or submit your exam.
+                    </p>
+                  </li>
+                  <li class="">
+                    <p class="fs-15">
+                      The question palette at the right of the screen shows one
+                      of the following statuses of each of the questions
+                      numbered:
+                    </p>
+                    <ul class="list-unstyled">
+                      <li class="d-flex aligh-items-start mb-2">
+                        <a
+                          href="javascript:;"
+                          class="rounded-pill fs-14 bg-light border shadow h-30px w-30px d-flex align-items-center justify-content-center"
+                          ><i class="fad fa-hand-point-right"></i
+                        ></a>
+                        <p class="fs-15 mb-0 d-flex align-items-center ml-2">
+                          You have not visited the question yet.
+                        </p>
+                      </li>
+                      <li class="d-flex aligh-items-start mb-2">
+                        <a
+                          href="javascript:;"
+                          class="rounded-pill fs-14 bg-orange shadow h-30px w-30px d-flex align-items-center justify-content-center"
+                          ><i class="fad fa-hand-point-right"></i
+                        ></a>
+                        <p class="fs-15 mb-0 d-flex align-items-center ml-2">
+                          You have not answered the question.
+                        </p>
+                      </li>
+                      <li class="d-flex aligh-items-start mb-2">
+                        <a
+                          href="javascript:;"
+                          class="position-relative rounded-pill fs-14 bg-orange shadow h-30px w-30px d-flex align-items-center justify-content-center"
+                          ><i class="fas fa-hand-point-right"></i>
+                          <span
+                            class="fs-14 position-absolute top-n5px right-n2px"
+                            ><i
+                              class="fas fa-check text-success font-weight-bold"
+                            ></i
+                          ></span>
+                        </a>
+                        <p class="fs-15 mb-0 d-flex align-items-center ml-2">
+                          You have answered the question but marked it for
+                          review.
+                        </p>
+                      </li>
+                      <li class="d-flex aligh-items-start mb-2">
+                        <a
+                          href="javascript:;"
+                          class="rounded-pill fs-14 bg-success shadow h-30px w-30px d-flex align-items-center justify-content-center"
+                          ><i class="fad fa-hand-point-right"></i
+                        ></a>
+                        <p class="fs-15 mb-0 d-flex align-items-center ml-2">
+                          You have answered the question.
+                        </p>
+                      </li>
+                      <li class="d-flex aligh-items-start mb-2">
+                        <a
+                          href="javascript:;"
+                          class="rounded-pill fs-14 bg-pink shadow h-30px w-30px d-flex align-items-center justify-content-center"
+                          ><i class="fad fa-hand-point-right"></i
+                        ></a>
+                        <p class="fs-15 mb-0 d-flex align-items-center ml-2">
+                          You have NOT answered the question but have marked the
+                          question for review.
+                        </p>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+                <span class="fs-16 text-primary"
+                  ><strong class="fs-16 text-secondary">Note :</strong> If an
+                  answer is selected for a question that is Marked for Review,
+                  the answer will be considered in the final evaluation.</span
+                >
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-12 mb-3 fs-18 text-secondary font-weight-bold">
+                Navigating to a question :-
+              </div>
+              <div class="col-12">
+                <ul class="list_count list_count pl-4 mb-4">
+                  <li class="">
+                    <p class="fs-15">
+                      To select a question to answer, you can do one of the
+                      following:
+                    </p>
+                    <ul class="pl-0 list-unstyled">
+                      <li class="">
+                        <p class="d-flex fs-15 mb-3">
+                          <i
+                            class="mt-1 far fa-star mr-2 fs-14 text-secondary"
+                          ></i
+                          >Click on the question number on the question palette
+                          at the right of your screen to go to that numbered
+                          question directly. Note that using this option does
+                          NOT save your answer to the current question.
+                        </p>
+                      </li>
+                      <li class="">
+                        <p class="d-flex fs-15 mb-3">
+                          <i
+                            class="mt-1 far fa-star mr-2 fs-14 text-secondary"
+                          ></i
+                          >Click on Save and Next to save answer to current
+                          question and to go to the next question in sequence.
+                        </p>
+                      </li>
+                      <li class="">
+                        <p class="d-flex fs-15 mb-3">
+                          <i
+                            class="mt-1 far fa-star mr-2 fs-14 text-secondary"
+                          ></i
+                          >Click on Mark for Review and Next to save answer to
+                          current question, mark it for review, and to go to the
+                          next question in sequence.
+                        </p>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="">
+                    <p class="fs-15">
+                      You can view the entire paper by clicking on the Question
+                      Paper button.
+                    </p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-12 mb-3 fs-18 text-secondary font-weight-bold">
+                Answering questions :-
+              </div>
+              <div class="col-12">
+                <ul class="list_count list_count pl-4 mb-4">
+                  <li class="">
+                    <p class="fs-15">For multiple choice type question :</p>
+                    <ul class="pl-0 list-unstyled">
+                      <li class="">
+                        <p class="d-flex fs-15 mb-3">
+                          <i
+                            class="mt-1 far fa-star mr-2 fs-14 text-secondary"
+                          ></i
+                          >To select your answer, click on one of the option
+                          buttons
+                        </p>
+                      </li>
+                      <li class="">
+                        <p class="d-flex fs-15 mb-3">
+                          <i
+                            class="mt-1 far fa-star mr-2 fs-14 text-secondary"
+                          ></i
+                          >To change your answer, click the another desired
+                          option button
+                        </p>
+                      </li>
+                      <li class="">
+                        <p class="d-flex fs-15 mb-3">
+                          <i
+                            class="mt-1 far fa-star mr-2 fs-14 text-secondary"
+                          ></i
+                          >To save your answer, you MUST click on Save & Next
+                        </p>
+                      </li>
+                      <li class="">
+                        <p class="d-flex fs-15 mb-3">
+                          <i
+                            class="mt-1 far fa-star mr-2 fs-14 text-secondary"
+                          ></i
+                          >To deselect a chosen answer, click on the chosen
+                          option again or click on the Clear Response button.
+                        </p>
+                      </li>
+                      <li class="">
+                        <p class="d-flex fs-15 mb-3">
+                          <i
+                            class="mt-1 far fa-star mr-2 fs-14 text-secondary"
+                          ></i
+                          >To mark a question for review click on Mark for
+                          Review & Next. If an answer is selected for a question
+                          that is Marked for Review, the answer will be
+                          considered in the final evaluation.
+                        </p>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="">
+                    <p class="fs-15">
+                      To change an answer to a question, first select the
+                      question and then click on the new answer option followed
+                      by a click on the Save & Next button.
+                    </p>
+                  </li>
+                  <li class="">
+                    <p class="fs-15">
+                      Questions that are saved or marked for review after
+                      answering will ONLY be considered for evaluation.
+                    </p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-12 mb-3 fs-18 text-secondary font-weight-bold">
+                Navigating through sections :-
+              </div>
+              <div class="col-12">
+                <ul class="list_count list_count pl-4 mb-4">
+                  <li class="">
+                    <p class="fs-15">
+                      Sections in this question paper are displayed on the top
+                      bar of the screen. Questions in a section can be viewed by
+                      clicking on the section name. The section you are
+                      currently viewing is highlighted.
+                    </p>
+                  </li>
+                  <li class="">
+                    <p class="fs-15">
+                      After clicking the Save & Next button on the last question
+                      for a section, you will automatically be taken to the
+                      first question of the next section.
+                    </p>
+                  </li>
+                  <li class="">
+                    <p class="fs-15">
+                      You can move the mouse cursor over the section names to
+                      view the status of the questions for that section.
+                    </p>
+                  </li>
+                  <li class="">
+                    <p class="fs-15">
+                      You can shuffle between sections and questions anytime
+                      during the examination as per your convenience.
+                    </p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="row d-none">
+              <div class="col-12">
+                <div
+                  class="instruction_footer mt-2 text-center border bg-light rounded shadow px-4 py-4"
+                >
+                  <div
+                    class="custom-control custom-checkbox mt-1 d-flex align-items-center"
+                  >
+                    <input
+                      class="custom-control-input"
+                      type="checkbox"
+                      id="start-test"
+                    />
+                    <label
+                      class="custom-control-label fs-15 text-left"
+                      for="start-test"
+                      >The computer provided to me is in proper working
+                      condition. I have read and understood the instructions
+                      given above</label
+                    >
+                  </div>
+                  <a
+                    href="javascript:;"
+                    class="btn btn-danger d-inline-block py-1 mt-3 fs-15 text-capitalize"
+                    ><i class="far fa-edit"></i>
+                    <span class="ml-1">Start Exam</span></a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div
+  class="modal fade exam_finish"
+  id="exampleModal1"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header text-center bg-light shadow">
+        <h5
+          class="modal-title w-100 fs-18 text-uppercase"
+          id="exampleModalLabel"
+        >
+          Your Attempts
+        </h5>
+        <button
+          type="button"
+          class="close position-absolute bg-light border shadow text-wite right-30px rounded-pill fs-20 w-25px h-25px p-0 d-flex justify-content-center align-items-center font-weight-normal top-32px"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body pb-0">
+        <div class="exam_attemped">
+          <div class="row">
+            <div class="col-6">
+              <div
+                class="row d-inline-flex align-items-center mx-0 bg-green rounded py-0 px-0"
+              >
+                <div class="col-auto pl-1 pr-2">
+                  <h3 class="fs-13 mb-0 text-white">Total Attempted:</h3>
+                </div>
+                <div class="col-auto pr-1 pl-0">
+                  <span class="fs-13 text-white">{{ Attempted }}</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 text-right">
+              <div
+                class="row mx-0 d-inline-flex align-items-center bg-primary rounded py-0 px-0"
+              >
+                <div class="col-auto pl-1 pr-2">
+                  <h3 class="fs-13 mb-0 text-white">Not Attempted:</h3>
+                </div>
+                <div class="col-auto pr-1 pl-0">
+                  <span class="fs-13 text-white">{{ notAttempted }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-5">
+            <div class="col-12">
+              <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Q NO.</th>
+                    <th scope="col">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let ele of answerArray">
+                    <td>
+                      <strong class="fs-14">{{ ele.qn }}</strong>
+                    </td>
+                    <td>
+                      <span
+                        class="bg-primary fs-13 h-25px w-25px d-flex align-items-center justify-content-center rounded-pill mx-auto"
+                        *ngIf="ele.optionNo != ''"
+                        >{{ ele.optionNo }}</span
+                      >
+                      <span *ngIf="ele.optionNo == ''">Not Answer</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="row border-top shadow bg-light mt-4 pt-3 pb-3">
+             <div class="col-6 text-right">
+               <a
+                 href="javascript:;"
+                 data-bs-dismiss="modal"
+                 class="btn btn-danger d-inline-block py-1 mt-0 fs-14 text-capitalize"
+                 ><span class="">Close</span></a
+               >
+             </div>
+            <div
+              class="col-6 text-left"
+              (click)="submit()"
+              data-bs-dismiss="modal"
+            >
+              <a
+                class="btn btn-danger d-inline-block py-1 mt-0 fs-14 text-capitalize"
+                ><span class="">Submit</span></a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ngx-spinner
+    bdColor="#bdeadb"
+    template="<img src='https://media.giphy.com/media/o8igknyuKs6aY/giphy.gif' />"
+  >
+  </ngx-spinner>
+</div>

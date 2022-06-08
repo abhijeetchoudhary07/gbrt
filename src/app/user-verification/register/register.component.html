@@ -1,0 +1,136 @@
+<form [formGroup]="registerForm" class="div1">
+    <div>
+      <h1 class="signin">SIGNIN</h1>
+      <label for="firstName">Name:</label>
+      <input
+        type="text"
+        [maxlength]="8"
+        [minlength]="3"
+        id="firstName"
+        name="firstName"
+        formControlName="firstName"
+      />
+      <br />
+      <small *ngIf="firstName && firstName.touched && firstName.invalid"
+        >Please enter valid name!</small
+      >
+      <br />
+  
+  
+      <label for="email">Email:</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        formControlName="email"
+      />
+      <br />
+      <small
+        *ngIf="
+          registerForm &&
+          registerForm.get('email')?.invalid &&
+          registerForm.get('email')?.touched
+        "
+        >!please enter valid email.</small
+      >
+      <br />
+
+      <label for="number">Number:</label>
+      <input
+    (keypress)="keyPressNumbersDecimal($event)"
+
+        type="text"
+        [maxlength]="10"
+        [minlength]="10"
+        id="mobileNumber"
+        name="mobileNumber"
+        formControlName="mobileNumber"
+      />
+      <br />
+      <small
+        *ngIf="
+          registerForm &&
+          registerForm.get('number')?.invalid &&
+          registerForm.get('number')?.touched
+        "
+        >!please enter valid number.</small
+      >
+      <br />
+      <label for="password"> Password:</label>
+      <input
+        type="password"
+        [maxlength]="10"
+        [minlength]="6"
+        id="password"
+        class="input"
+        name="password"
+        formControlName="password"
+      />
+      <br />
+      <small *ngIf="password && password.touched && password.invalid" style="margin-left: 10px;"
+        >   Password must be 6 characters long  (ex. Abc@123)</small
+      >
+      <br />
+  
+      <label for="confirmpassword" style="margin-left: -48px;">Confirm Password:</label>
+      <input
+        type="password"
+        [maxlength]="10"
+        [minlength]="6"
+        id="confirmpassword"
+        name="confirmoassword"
+        formControlName="confirmpassword"
+      />
+      <br />
+      <small
+        *ngIf="
+          this.registerForm.get('password')?.value !==
+          this.registerForm.get('confirmpassword')?.value && confirmpassword && confirmpassword.invalid && confirmpassword.touched
+        "
+        >Please enter same password!</small
+      >
+      <br />
+  
+      <small *ngIf="confirmpassword && confirmpassword.invalid"></small> <br />
+      <br />
+  
+      <button
+        type="submit"
+        class="submit"
+        class="btn btn-outline-secondary"
+     (click)="submit()"
+      [disabled]="
+      this.registerForm.get('password')?.value !==
+        this.registerForm.get('confirmpassword')?.value ||
+      registerForm.invalid" 
+      >
+        Sign in
+      </button>
+      <button
+      type="submit"
+      class="submit"
+      class="btn btn-outline-secondary"
+      style="margin-left: 20px;"
+   (click)="submit1()"
+    >
+     Login
+    </button>
+      <br /><br /><br />
+    </div>
+  </form>
+
+  <!-- <ngx-spinner size="medium"  [type]="typeSelected"></ngx-spinner> -->
+
+<ngx-spinner
+  bdColor="#bdeadb"
+  template="<img src='https://media.giphy.com/media/o8igknyuKs6aY/giphy.gif' />"
+>
+</ngx-spinner>
+<!-- <ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple"
+>
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner> -->

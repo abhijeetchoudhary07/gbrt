@@ -1,0 +1,167 @@
+<form [formGroup]="questionForm">
+  <div
+     class="col-12 test-body-left py-3 h-600"
+    *ngFor="let ele of newquestionArray; index as index"
+  >
+    <div
+      class="row mx-0 h-100 shadow rounded-10 border overflow-hidden d-block"
+    >
+      <div class="col-12 test-inner-header h-70px border-bottom bg-light">
+        <div class="row h-100 align-items-center">
+          <div class="col font-weight-bold fs-17">Question {{ ele.qn }}</div>
+          <div class="col-auto font-weight-bold fs-15">
+            <div class="row font-weight-bold">
+              <div class="col-auto pr-1">
+                <span class="text-gray">Correct Marks: </span
+                ><span class="text-success"> 4.00</span>
+              </div>
+              <div class="col-autotext-gray px-0">,</div>
+              <div class="col-auto pl-1">
+                <span class="text-gray">Negative Marks: </span
+                ><span class="text-danger"> 1.00</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 test-inner-body overflow-auto">
+        <div class="row">
+          <div class="col-12">
+            <div class="row">
+              <div
+                class="col-12 fs-15 py-3 border-bottom font-weight-500 text-gray question-box"
+              >
+                {{ ele.question }}
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 py-3">
+            <div class="row">
+              <div>
+                <label for="option"></label>
+                <div class="col-12">
+                  <div class="custom-control custom-radio mb-2">
+                    <input
+                      type="radio"
+                      id="customRadio1"
+                      name="option"
+                      value="{{ ele.optionA + 'A' }}"
+                      class="custom-control-input"
+                      formControlName="option"
+                    />
+                    <label
+                      class="custom-control-label fs-14 h-25px d-inline-flex align-items-center"
+                      for="customRadio1"
+                      ><span class="mr-2 font-weight-bold">A.</span>
+                      {{ ele.optionA }}</label
+                    >
+                  </div>
+                  <div class="custom-control custom-radio mb-2">
+                    <input
+                      type="radio"
+                      id="customRadio2"
+                      name="option"
+                      value="{{ ele.optionB + 'B' }}"
+                      class="custom-control-input"
+                      formControlName="option"
+                    />
+                    <label
+                      class="custom-control-label fs-14 h-25px d-inline-flex align-items-center"
+                      for="customRadio2"
+                      ><span class="mr-2 font-weight-bold">B.</span
+                      >{{ ele.optionB }}</label
+                    >
+                  </div>
+                  <div class="custom-control custom-radio mb-2">
+                    <input
+                      type="radio"
+                      id="customRadio3"
+                      name="option"
+                      value="{{ ele.optionC + 'C' }}"
+                      class="custom-control-input"
+                      formControlName="option"
+                    />
+                    <label
+                      class="custom-control-label fs-14 h-25px d-inline-flex align-items-center"
+                      for="customRadio3"
+                      ><span class="mr-2 font-weight-bold">C.</span>
+                      {{ ele.optionC }}</label
+                    >
+                  </div>
+                  <div class="custom-control custom-radio mb-2">
+                    <input
+                      type="radio"
+                      id="customRadio4"
+                      name="option"
+                      value="{{ ele.optionD + 'D' }}"
+                      class="custom-control-input"
+                      formControlName="option"
+                    />
+                    <label
+                      class="custom-control-label fs-14 h-25px d-inline-flex align-items-center"
+                      for="customRadio4"
+                      ><span class="mr-2 font-weight-bold">D.</span
+                      >{{ ele.optionD }}</label
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 test-inner-footer">
+        <div class="row justify-content-between" style="margin-top: -47px">
+          <div class="col-6">
+            <div class="row">
+              <div class="col-auto" (click)="markedQuestion(ele)">
+                <a
+                  href="javascript:;"
+                  class="btn btn-orange d-inline-flex justify-content-center align-items-center py-0 px-2 border text-capitalize fs-14 h-35px"
+                  style="background-color: rgb(251, 160, 41)"
+                >
+                  <i class="far fa-dot-circle"></i>
+                  <span class="ml-1">Mark for Review & Next</span></a
+                >
+              </div>
+              <div class="col-auto pl-0" (click)="resetOptions()">
+                <a
+                  href="javascript:;"
+                  class="btn btn-danger d-inline-flex justify-content-center align-items-center py-0 px-2 border text-capitalize fs-14 h-35px"
+                >
+                  <i class="fa-solid fa-ban"></i>
+                  <span class="ml-1">Reset Answer</span></a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="row justify-content-end">
+              <div class="col-auto text-right" (click)="perviousQuestion(ele)">
+                <a
+                  href="javascript:;"
+                  class="btn btn-light d-inline-flex justify-content-center align-items-center py-0 px-2 border text-capitalize fs-14 h-35px"
+                  ><i class="fa-solid fa-arrow-left"></i>
+                  <span class="ml-1">prev</span>
+                </a>
+              </div>
+              <div
+                class="col-auto pl-0 text-right"
+                (click)="save(ele); nextQuestion(ele); saveAnswer(ele)"
+              >
+                <a
+                  href="javascript:;"
+                  class="btn btn-success d-inline-flex justify-content-center align-items-center py-0 px-2 border text-capitalize fs-14 h-35px"
+                >
+                  <span class="ml-1">Save &amp; Next</span>
+                  <i class="fa-solid fa-arrow-right"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
